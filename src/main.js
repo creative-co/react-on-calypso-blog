@@ -19,15 +19,7 @@ import postsIndexReducer from 'posts/posts_index/posts_index_reducer'
 const reducer = combineReducers({
   routing: routerReducer,
   posts: postsReducer,
-  postsIndex: postsIndexReducer,
-//   modal: modalsReducer,
-//   trends: trendsReducer,
-//   exploreTrends: exploreTrendsReducer,
-//   featuredTrends: featuredTrendsReducer,
-//   recurringTrends: recurringTrendsReducer,
-//   collections: collectionsReducer,
-//   users: usersReducer,
-//   velocities: velocityReducer,
+  postsIndex: postsIndexReducer
 })
 
 const middleware = applyMiddleware(thunk)
