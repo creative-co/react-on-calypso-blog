@@ -10,7 +10,6 @@ export const request = (id) => dispatch => {
       dispatch(add([res]))
     })
     .catch(error => {
-      console.log(error)
       throw error
     })
 }
@@ -21,7 +20,6 @@ export const requestList = (options = {number: 10}) => dispatch => {
       dispatch(add(res.posts))
     })
     .catch(error => {
-      console.log(error)
       throw error
     })
 }

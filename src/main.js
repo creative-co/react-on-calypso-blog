@@ -14,10 +14,12 @@ import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
 // Reducers
 import postsReducer from 'posts/posts_reducer'
+import postsIndexReducer from 'posts/posts_index/posts_index_reducer'
 
 const reducer = combineReducers({
   routing: routerReducer,
   posts: postsReducer,
+  postsIndex: postsIndexReducer,
 //   modal: modalsReducer,
 //   trends: trendsReducer,
 //   exploreTrends: exploreTrendsReducer,
@@ -33,7 +35,7 @@ const store = createStore(reducer, middleware)
 const history = syncHistoryWithStore(browserHistory, store)
 
 // Components
-import PostIndex from './posts/posts_index'
+import PostIndex from './posts/posts_index/posts_index'
 import PostShow from './posts/posts_show'
 
 class App extends Component {

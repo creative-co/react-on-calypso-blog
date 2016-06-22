@@ -9,10 +9,7 @@ import Loader from 'common/loader'
 
 @connect(
   (state, props) => {
-    const post = find(propEq('slug', props.params.id))(state.posts)
-    console.log(state.posts)
-    console.log(post)
-    return { post: post }
+    return { post: find(propEq('slug', props.params.id))(state.posts) }
   },
   { request }
 )
