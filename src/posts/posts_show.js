@@ -16,14 +16,14 @@ import Loader from 'common/loader'
 export default class ConnectedPostsShow extends Component {
 
   componentWillMount() {
-    if (!this.props.post) {
+    if (!this.props.post || !this.props.post.content) {
       return this.props.request(this.props.params.id)
     }
   }
 
   render() {
     const { post } = this.props
-    if (!post) {
+    if (!post || !post.content) {
       return <Loader />
     }
     document.title = post.title
