@@ -25,7 +25,7 @@ module.exports = {
         include: __dirname,
         query: {
           plugins: ['transform-decorators-legacy', 'transform-class-properties'],
-          presets: ['es2015', 'stage-0', 'react', 'react-hmre']
+          presets: ['es2015', 'stage-0', 'react'] // 'react-hmre']
         }
       }
     ]
