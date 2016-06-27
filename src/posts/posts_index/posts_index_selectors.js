@@ -10,6 +10,7 @@ export const postIndexSelector = (state, props) => {
   return {
     posts: map(id => find(propEq('ID', id), posts))(postsIds),
     page,
+    tag,
     hasMore,
     filter: {tag}
   }

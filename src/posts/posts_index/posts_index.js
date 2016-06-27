@@ -42,9 +42,12 @@ export default class ConnectedPostsIndex extends Component {
     if (this.state.loading) {
       return <Loader />
     }
-    const { posts } = this.props
+    const { posts, tag } = this.props
 
     return <div className="posts-index">
+      {
+        tag ? <h3>Filter by tag: {tag}</h3> : null
+      }
       <div className="posts-list">
       {
         posts.map((post) => (
