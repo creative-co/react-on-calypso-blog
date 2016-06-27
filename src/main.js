@@ -12,6 +12,8 @@ import thunk from 'redux-thunk'
 import {Router, Route, IndexRoute, Redirect, browserHistory} from 'react-router'
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
 
+import { is } from 'ramda'
+
 // Reducers
 import postsReducer from 'posts/posts_reducer'
 import postsIndexReducer from 'posts/posts_index/posts_index_reducer'
@@ -39,11 +41,24 @@ class App extends Component {
   }
 }
 
+function forceRemount(Component, props) {
+  if (props.route.composeId) {
+    props.params.id = `${props.params.idScope}/${props.params.idValue}`
+  }
+
+  if (props.route.forceRemount) {
+    const key = is(String, props.route.forceRemount) ? props.params[props.route.forceRemount] : props.location.key
+    return <Component key={ key } {...props} />
+  } else {
+    return <Component {...props} />
+  }
+}
+
 render((
   <Provider store={ store }>
-    <Router history={ history } onUpdate={ () => window.scrollTo(0, 0) }>
+    <Router history={ history } createElement={forceRemount} onUpdate={ () => window.scrollTo(0, 0) }>
       <Route path="/" component={ App }>
-        <IndexRoute component={PostIndex}/>
+        <IndexRoute component={PostIndex} forceRemount={true}/>
         <Route path="/:id" component={PostShow} />
       </Route>
     </Router>

@@ -2,7 +2,7 @@ import { concat, uniqBy, prop, merge, compose, uniq, map } from 'ramda'
 
 const defaultState = {
   posts: [],
-  tag: [],
+  tag: null,
   page: 1,
   hasMore: true
 }
@@ -17,7 +17,7 @@ export default function postsIndexReducer(state = defaultState, action) {
     case 'POSTS_INDEX.REPLACE':
       return merge(state, {
         page: defaultState.page,
-        posts: compose(uniq, map(prop('ID'))(action.posts) )
+        posts: compose(uniq, map(prop('ID')))(action.posts)
       })
     case 'POSTS_INDEX.SET_TAG':
       return merge(state, {
